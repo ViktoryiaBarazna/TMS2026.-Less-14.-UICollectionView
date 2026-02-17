@@ -73,7 +73,7 @@ final class ViewController: UIViewController {
     }
     
     private func setupSubviews() {
-        collectionView.delegate = self
+//        collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(PhotoCell.self, forCellWithReuseIdentifier: PhotoCell.identifier)
 
@@ -145,7 +145,8 @@ extension ViewController: UICollectionViewDataSource {
         
         // Обработка нажатия на лайк
         cell.likeTapped = { [weak self] in
-            guard let self = self else { return }
+            guard let self else { return }
+//            guard let self = self else { return }
             // Меняем состояние в модели
             self.photos[indexPath.item].isLiked.toggle()
             // Обновляем только кнопку в ячейке, если она видима
@@ -157,7 +158,8 @@ extension ViewController: UICollectionViewDataSource {
         
         // Обработка нажатия на избранное
         cell.favouriteTapped = { [weak self] in
-            guard let self = self else { return }
+            guard let self else { return }
+//            guard let self = self else { return }
             self.photos[indexPath.item].isFavourite.toggle()
             if let visibleCell = collectionView.cellForItem(at: indexPath) as? PhotoCell {
                 let updatedModel = self.photos[indexPath.item]
@@ -169,9 +171,9 @@ extension ViewController: UICollectionViewDataSource {
 }
 
 
-// MARK: - UICollectionViewDelegate (пусто, но можно добавить обработку выбора)
-extension ViewController: UICollectionViewDelegate {
-}
+//// MARK: - UICollectionViewDelegate (пусто, но можно добавить обработку выбора)
+//extension ViewController: UICollectionViewDelegate {
+//}
 
 
 
